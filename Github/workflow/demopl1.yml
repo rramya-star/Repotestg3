@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu - latest
     steps:
       - name: welcome message
-        run: echo "my first github action"
+        run: cat hello.sh
       - name: list files
         run: list
+      - name: read file
+        run: cat readme.md  
