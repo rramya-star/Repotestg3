@@ -1,0 +1,14 @@
+name: my first workflow
+on: push
+jobs:
+  first_job:
+    runs -on: ubuntu-label
+    steps:
+      -name: checkout Repo
+       uses: actions/checkout@v4
+
+      -name: list and read files
+       run:
+         echo "My First Github Actions Job"
+         ls -ltra
+         car README.md
