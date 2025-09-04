@@ -11,4 +11,6 @@ jobs:
        run:
          echo "My First Github Actions Job"
          ls -ltra
+      -name: Run ascii art script
+       run: ./ascii-script.sh
          car README.md
