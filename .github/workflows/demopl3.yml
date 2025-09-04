@@ -1,6 +1,11 @@
 name: Generate ASCII Artwork
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+        loglevel
+        descirption: 'Log level'
+        required: true
+        default: 'warning'
     branches:
       - main
 
@@ -10,25 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-         uses: actions/checkout@v2
-
+        uses: actions/checkout@v2
 
       - name: Install cowsay
-         run: sudo apt-get update && sudo apt-get install cowsay -y
+        run: sudo apt-get update && sudo apt-get install cowsay -y
 
 
       - name: Generate ASCII dragon
-         run: cowsay -f dragon "Run for cover, I am a DRAGON.... RAWR" >> dragon.txt
+        run: cowsay -f dragon "Run for cover, I am a DRAGON.... RAWR" >> dragon.txt
 
-      -name: Upload dragobn text file
-       use: actions/upload-artifact@v2
-       with:
-        name: dragon-test file
+      - name: Upload dragobn text file
+        uses: actions/upload-artifact@v2
+        with:
+            name: my artifact
+            path: dragon.txt
+
+      - name: dragon-test file
         path: dragon.txt
-      - name: Pause for 30 seconds
-         run: sleep 30
 
+     -  name: Pause for 30 seconds
+        run: sleep 30
 
+ 
   test_job_2:
     needs: build_job_1
     runs-on: ubuntu-latest
