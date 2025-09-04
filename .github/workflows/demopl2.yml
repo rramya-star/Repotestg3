@@ -9,8 +9,8 @@ jobs:
 
       - name: list and read files
         run:
-         echo "My First Github Actions Job"
-         ls -ltra
+          echo "My First Github Actions Job"
+          ls -ltra
       - name: Run ascii art script
         run: ./ascii-script.sh
-         car README.md
+          cat README.md
