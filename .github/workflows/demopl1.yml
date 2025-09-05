@@ -3,14 +3,14 @@ on: push
 
 jobs:
   first_job:
-    runs-on: self-hosted
+    runs-on: subuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
     steps:
-      - uses: actions/checkout@v4
-      - name: welcome message
-        run: cat hello.sh
-      - name: list files
-        run: ls
-      - name: make script executable;e
-        run: chmod +x hello.sh
-      - name: run hello
-        run: ./hello.sh 
+      - name: step1
+        id: step1
+        run: echo "test hello" >> "$GITHUB_OUTPUT"
+      - name: step2
+        id: step2
+        run: echo "test world" >> "$GITHUB_OUTPUT"
